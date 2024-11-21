@@ -1,0 +1,17 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -69,8 +69,12 @@
+
+ option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
+ add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
+-
+-cmake_dependent_option(BUILD_DESIGNERPLUGIN "Build plugin for Qt Designer" ON "NOT CMAKE_CROSSCOMPILING" OFF)
++if (CMAKE_CROSSCOMPILING)
++    set(BUILD_DESIGNERPLUGIN_DEFAULT OFF)
++else()
++    set(BUILD_DESIGNERPLUGIN_DEFAULT ON)
++endif()
++option(BUILD_DESIGNERPLUGIN "Build plugin for Qt Designer" ${BUILD_DESIGNERPLUGIN_DEFAULT})
+ add_feature_info(DESIGNERPLUGIN ${BUILD_DESIGNERPLUGIN} "Build plugin for Qt Designer")
+
+ set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
