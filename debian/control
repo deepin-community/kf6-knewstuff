@@ -1,15 +1,121 @@
-Source: template-repository
-Section: unknown
+Source: kf6-knewstuff
+Section: libs
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Uploaders: Aurélien COUDERC <coucouf@debian.org>,
+           Patrick Franz <deltaone@debian.org>,
+Build-Depends: cmake (>= 3.16~),
+               debhelper-compat (= 13),
+               dh-sequence-kf6,
+               dh-sequence-pkgkde-symbolshelper,
+               dh-sequence-qmldeps,
+               doxygen,
+               extra-cmake-modules (>= 6.6.0~),
+               gettext,
+               libkf6archive-dev (>= 6.6.0~),
+               libkf6attica-dev (>= 6.6.0~),
+               libkf6config-dev (>= 6.6.0~),
+               libkf6coreaddons-dev (>= 6.6.0~),
+               libkf6i18n-dev (>= 6.6.0~),
+               libkf6package-dev (>= 6.6.0~),
+               libkf6syndication-dev (>= 6.0.0~),
+               libkf6widgetsaddons-dev (>= 6.6.0~),
+               libkirigami-dev (>= 2.12.0~),
+               libxkbcommon-dev,
+               qml6-module-org-kde-kcmutils,
+               qt6-base-dev (>= 6.5.0+dfsg~),
+               qt6-base-private-dev (>= 6.5.0+dfsg~),
+               qt6-declarative-dev (>= 6.5.0+dfsg~),
+               qt6-declarative-private-dev (>= 6.5.0+dfsg~),
+               qt6-tools-dev (>= 6.5.0~),
+               xauth <!nocheck>,
+               xvfb <!nocheck>,
+Standards-Version: 4.7.0
+Homepage: https://invent.kde.org/frameworks/knewstuff
+Vcs-Browser: https://salsa.debian.org/qt-kde-team/kde/kf6-knewstuff
+Vcs-Git: https://salsa.debian.org/qt-kde-team/kde/kf6-knewstuff.git
+Rules-Requires-Root: no
 
-Package: template-repository
+Package: knewstuff-dialog6
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: libkf6newstuff-data (= ${source:Version}),
+         qml6-module-org-kde-newstuff (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Description: Support for downloading application assets from the network
+ Framework for downloading and sharing additional
+ application data.
+ .
+ This package contains standalone tool for use by apps which don't
+ want a hard dependency.
+
+Package: libkf6newstuff-data
+Architecture: all
+Depends: ${misc:Depends},
+Multi-Arch: foreign
+Description: Support for downloading application assets from the network
+ Framework for downloading and sharing additional
+ application data.
+ .
+ This package contains the data files.
+
+Package: libkf6newstuff-dev
+Section: libdevel
+Architecture: any
+Depends: libkf6attica-dev (>= 6.6.0~),
+         libkf6coreaddons-dev (>= 6.6.0~),
+         libkf6newstuffcore6 (= ${binary:Version}),
+         libkf6newstuffwidgets6 (= ${binary:Version}),
+         qml6-module-org-kde-newstuff (= ${binary:Version}),
+         qt6-base-dev (>= 6.5.0+dfsg~),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Recommends: libkf6newstuff-doc (= ${source:Version}),
+Description: development files for knewstuff
+ Framework for downloading and sharing additional
+ application data.
+ .
+ Contains development files for knewstuff.
+
+Package: libkf6newstuff-doc
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+Description: Support for downloading application assets from the network (documentation)
+ Framework for downloading and sharing additional
+ application data.
+ .
+ This package contains the qch documentation files.
+Section: doc
+
+Package: libkf6newstuffcore6
+Architecture: any
+Multi-Arch: same
+Depends: libkf6newstuff-data (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Recommends: qml6-module-org-kde-newstuff (= ${binary:Version}),
+Description: Support for downloading application assets from the network
+ Framework for idownloading and sharing additional
+ application data.
+
+Package: libkf6newstuffwidgets6
+Architecture: any
+Multi-Arch: same
+Depends: libkf6newstuff-data (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Description: Support for downloading application assets from the network
+ Framework for idownloading and sharing additional
+ application data.
+
+Package: qml6-module-org-kde-newstuff
+Architecture: any
+Depends: ${misc:Depends},
+         ${qml6:Depends},
+         ${shlibs:Depends},
+Description: Support for downloading application assets from the network
+ Framework for downloading and sharing additional
+ application data.
+ .
+ This package contains the runtime files.
