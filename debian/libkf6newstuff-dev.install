@@ -1,0 +1,8 @@
+usr/include/KF6/KNewStuff/
+usr/include/KF6/KNewStuffCore/
+usr/include/KF6/KNewStuffWidgets/
+usr/lib/*/cmake/KF6NewStuff/
+usr/lib/*/cmake/KF6NewStuffCore/
+usr/lib/*/libKF6NewStuffCore.so
+usr/lib/*/libKF6NewStuffWidgets.so
+usr/lib/*/qt6/plugins/designer/knewstuff6widgets.so
